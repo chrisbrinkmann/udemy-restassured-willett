@@ -8,6 +8,8 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
+/* Deprecated class. Use App specific config class instead */
+
 public class TestConfig {
 	@BeforeClass
 	public static void setup() {
