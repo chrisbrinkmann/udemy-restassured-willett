@@ -1,4 +1,4 @@
-package com.brinkmcd.restassured.tests;
+package com.brinkmcd.restassured.config;
 
 import org.junit.BeforeClass;
 

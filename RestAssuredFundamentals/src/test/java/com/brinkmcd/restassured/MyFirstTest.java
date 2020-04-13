@@ -1,4 +1,4 @@
-package com.brinkmcd.restassured.tests;
+package com.brinkmcd.restassured;
 import static io.restassured.RestAssured.get;
 import static io.restassured.RestAssured.given;
 
