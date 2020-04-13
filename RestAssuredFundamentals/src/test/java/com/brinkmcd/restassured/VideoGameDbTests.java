@@ -36,22 +36,57 @@ public class VideoGameDbTests extends VideoGamesDbTestConfig {
 //			.log().all();
 //	}
 	
+//	@Test
+//	public void createNewGameByXML( ) {
+//		String requestBodyXml = "  <videoGame category=\"JRPG\" rating=\"Teen\">\r\n" + 
+//				"    <id>12</id>\r\n" + 
+//				"    <name>Final Fantasy 9</name>\r\n" + 
+//				"    <releaseDate>2020-04-13T00:00:00-04:00</releaseDate>\r\n" + 
+//				"    <reviewScore>97</reviewScore>\r\n" + 
+//				"  </videoGame>";
+//		
+//		given()
+//			.body(requestBodyXml)
+//			.header("Accept", "application/xml")
+//			.header("Content-Type", "application/xml")
+//			.when()
+//			.post(VideoGamesDbTestEndpoints.ALL_VIDEO_GAMES)
+//			.then()
+//			.log().all();
+//	}
+	
+//	@Test
+//	public void updateGame() {
+//		String gameBodyJson = "{\r\n" + 
+//				"  \"id\": 11,\r\n" + 
+//				"  \"name\": \"Final Fantasy VIII\",\r\n" + 
+//				"  \"releaseDate\": \"2020-04-13T18:14:18.705Z\",\r\n" + 
+//				"  \"reviewScore\": 98,\r\n" + 
+//				"  \"category\": \"JRPG\",\r\n" + 
+//				"  \"rating\": \"Teen\"\r\n" + 
+//				"}";
+//		
+//		given()
+//			.body(gameBodyJson)
+//			.when()
+//			.put("/videogames/11")
+//			.then().log().all();
+//	}
+	
+//	@Test
+//	public void deleteGame() {
+//		given()
+//			.when()
+//			.delete("/videogames/1")
+//			.then().log().all();
+//	}
+	
 	@Test
-	public void createNewGameByXML( ) {
-		String requestBodyXml = "  <videoGame category=\"JRPG\" rating=\"Teen\">\r\n" + 
-				"    <id>12</id>\r\n" + 
-				"    <name>Final Fantasy 9</name>\r\n" + 
-				"    <releaseDate>2020-04-13T00:00:00-04:00</releaseDate>\r\n" + 
-				"    <reviewScore>97</reviewScore>\r\n" + 
-				"  </videoGame>";
-		
+	public void getGame() {
 		given()
-			.body(requestBodyXml)
-			.header("Accept", "application/xml")
-			.header("Content-Type", "application/xml")
-			.when()
-			.post(VideoGamesDbTestEndpoints.ALL_VIDEO_GAMES)
-			.then()
-			.log().all();
+		.pathParam("videoGameId", 5)
+		.when()
+		.get(VideoGamesDbTestEndpoints.SINGLE_VIDEO_GAME)
+		.then().log().all();
 	}
 }
