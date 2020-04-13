@@ -1,12 +1,13 @@
+package com.brinkmcd.restassured.tests;
 import org.junit.Test;
 import static io.restassured.RestAssured.*;
 
-public class MyFirstTest {
+public class MyFirstTest extends TestConfig {
 	@Test
 	public void myFirstTest() {
 		given()
 			.log().all()
-		.when().get("http://localhost:8080/app/videogames")
+		.when().get("videogames")
 		.then()
 			.log().all();
 		
