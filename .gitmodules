@@ -1,0 +1,3 @@
+[submodule "videogamedb"]
+	path = videogamedb
+	url = https://github.com/james-willett/VideoGameDB
