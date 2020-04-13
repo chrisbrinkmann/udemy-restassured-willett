@@ -10,6 +10,6 @@ public class MyFirstTest extends TestConfig {
 		.when().get("videogames")
 		.then()
 			.log().all();
-		
+			
 	}
 }
