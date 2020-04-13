@@ -8,7 +8,7 @@ import io.restassured.builder.ResponseSpecBuilder;
 import io.restassured.specification.RequestSpecification;
 import io.restassured.specification.ResponseSpecification;
 
-public class VideoGameDbTestConfig {
+public class VideoGamesDbTestConfig {
 	
 	private static RequestSpecification videoGameRequestSpec;
 	private static ResponseSpecification videoGameResponseSpec;

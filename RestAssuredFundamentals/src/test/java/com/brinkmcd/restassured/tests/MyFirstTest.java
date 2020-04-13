@@ -1,11 +1,13 @@
 package com.brinkmcd.restassured.tests;
+import static io.restassured.RestAssured.get;
+import static io.restassured.RestAssured.given;
+
 import org.junit.Test;
 
-import com.brinkmcd.restassured.config.VideoGameDbTestConfig;
+import com.brinkmcd.restassured.config.VideoGamesDbTestConfig;
+import com.brinkmcd.restassured.config.VideoGamesDbTestEndpoints;
 
-import static io.restassured.RestAssured.*;
-
-public class MyFirstTest extends VideoGameDbTestConfig {
+public class MyFirstTest extends VideoGamesDbTestConfig {
 	@Test
 	public void myFirstTest() {
 		given()
@@ -14,5 +16,11 @@ public class MyFirstTest extends VideoGameDbTestConfig {
 		.then()
 			.log().all();
 			
+	}
+	
+	@Test
+	public void myFirstTestWithEndpoint() {
+		get(VideoGamesDbTestEndpoints.ALL_VIDEO_GAMES)
+		.then().log().all();
 	}
 }
