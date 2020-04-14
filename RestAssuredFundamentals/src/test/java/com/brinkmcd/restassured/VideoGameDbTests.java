@@ -9,6 +9,7 @@ import com.brinkmcd.videogame.VideoGame;
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.matchesXsdInClasspath;
+import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
 
 public class VideoGameDbTests extends VideoGamesDbConfig {
 
@@ -114,5 +115,15 @@ public class VideoGameDbTests extends VideoGamesDbConfig {
 			.get(VideoGamesDbEndpoints.SINGLE_VIDEO_GAME)
 		.then()
 			.body(matchesXsdInClasspath("VideoGameXSD.xsd"));
+	}
+	
+	@Test
+	public void testVideoGameSchemaJson() {
+		given()
+		.pathParam("videoGameId", 5)
+	.when()
+		.get(VideoGamesDbEndpoints.SINGLE_VIDEO_GAME)
+	.then()
+		.body(matchesJsonSchemaInClasspath("VideoGameJsonSchema.json"));
 	}
 }
