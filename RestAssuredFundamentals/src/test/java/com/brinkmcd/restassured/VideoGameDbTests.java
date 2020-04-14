@@ -2,12 +2,12 @@ package com.brinkmcd.restassured;
 
 import org.junit.Test;
 
-import com.brinkmcd.restassured.config.VideoGamesDbTestConfig;
-import com.brinkmcd.restassured.config.VideoGamesDbTestEndpoints;
+import com.brinkmcd.restassured.config.VideoGamesDbConfig;
+import com.brinkmcd.restassured.config.VideoGamesDbEndpoints;
 
 import static io.restassured.RestAssured.*;
 
-public class VideoGameDbTests extends VideoGamesDbTestConfig {
+public class VideoGameDbTests extends VideoGamesDbConfig {
 
 //	@Test
 //	public void getAllGames() {
@@ -86,7 +86,7 @@ public class VideoGameDbTests extends VideoGamesDbTestConfig {
 		given()
 		.pathParam("videoGameId", 5)
 		.when()
-		.get(VideoGamesDbTestEndpoints.SINGLE_VIDEO_GAME)
+		.get(VideoGamesDbEndpoints.SINGLE_VIDEO_GAME)
 		.then().log().all();
 	}
 }

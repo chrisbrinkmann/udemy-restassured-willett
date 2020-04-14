@@ -4,10 +4,10 @@ import static io.restassured.RestAssured.given;
 
 import org.junit.Test;
 
-import com.brinkmcd.restassured.config.VideoGamesDbTestConfig;
-import com.brinkmcd.restassured.config.VideoGamesDbTestEndpoints;
+import com.brinkmcd.restassured.config.VideoGamesDbConfig;
+import com.brinkmcd.restassured.config.VideoGamesDbEndpoints;
 
-public class MyFirstTest extends VideoGamesDbTestConfig {
+public class MyFirstTest extends VideoGamesDbConfig {
 	@Test
 	public void myFirstTest() {
 		given()
@@ -20,7 +20,7 @@ public class MyFirstTest extends VideoGamesDbTestConfig {
 	
 	@Test
 	public void myFirstTestWithEndpoint() {
-		get(VideoGamesDbTestEndpoints.ALL_VIDEO_GAMES)
+		get(VideoGamesDbEndpoints.ALL_VIDEO_GAMES)
 		.then().log().all();
 	}
 }
