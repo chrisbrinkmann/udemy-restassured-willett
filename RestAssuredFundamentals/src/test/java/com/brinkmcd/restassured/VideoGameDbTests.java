@@ -2,11 +2,13 @@ package com.brinkmcd.restassured;
 
 import org.junit.Test;
 
+
 import com.brinkmcd.restassured.config.VideoGamesDbConfig;
 import com.brinkmcd.restassured.config.VideoGamesDbEndpoints;
 import com.brinkmcd.videogame.VideoGame;
 
 import static io.restassured.RestAssured.*;
+import static io.restassured.matcher.RestAssuredMatchers.matchesXsdInClasspath;
 
 public class VideoGameDbTests extends VideoGamesDbConfig {
 
@@ -100,5 +102,17 @@ public class VideoGameDbTests extends VideoGamesDbConfig {
 		.when()
 			.post(VideoGamesDbEndpoints.ALL_VIDEO_GAMES)
 		.then();
+	}
+	
+	@Test
+	public void testVideoGameSchemaXML() {
+		given()
+			.pathParam("videoGameId", 5)
+			.header("Content-Type", "application/xml")
+			.header("Accept", "application/xml")
+		.when()
+			.get(VideoGamesDbEndpoints.SINGLE_VIDEO_GAME)
+		.then()
+			.body(matchesXsdInClasspath("VideoGameXSD.xsd"));
 	}
 }
