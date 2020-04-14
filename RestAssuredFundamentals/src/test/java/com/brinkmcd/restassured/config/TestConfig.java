@@ -20,8 +20,8 @@ public class TestConfig {
 		RestAssured.port = 8080;
 		
 		RequestSpecification requestSpecification = new RequestSpecBuilder()
-				.addHeader("Content-Type", "application/json")
-				.addHeader("Accept", "application/json")
+				.addHeader("Content-Type", "application/xml")
+				.addHeader("Accept", "application/xml")
 				.build();
 		
 		RestAssured.requestSpecification = requestSpecification;
