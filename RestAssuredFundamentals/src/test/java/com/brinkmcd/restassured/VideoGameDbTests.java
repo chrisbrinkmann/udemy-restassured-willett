@@ -7,6 +7,8 @@ import com.brinkmcd.restassured.config.VideoGamesDbConfig;
 import com.brinkmcd.restassured.config.VideoGamesDbEndpoints;
 import com.brinkmcd.videogame.VideoGame;
 
+import io.restassured.response.Response;
+
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.matchesXsdInClasspath;
 import static io.restassured.module.jsv.JsonSchemaValidator.matchesJsonSchemaInClasspath;
@@ -125,5 +127,19 @@ public class VideoGameDbTests extends VideoGamesDbConfig {
 		.get(VideoGamesDbEndpoints.SINGLE_VIDEO_GAME)
 	.then()
 		.body(matchesJsonSchemaInClasspath("VideoGameJsonSchema.json"));
+	}
+	
+	@Test
+	public void convertJsonToPojo() {
+		Response response =
+				given()
+					.pathParam("videoGameId", 5)
+				.when()
+					.get(VideoGamesDbEndpoints.SINGLE_VIDEO_GAME);
+				
+		VideoGame videoGame = response.getBody().as(VideoGame.class);
+		
+		System.out.println("Printing Pojo object converted from JSON res:");
+		System.out.println(videoGame.toString());
 	}
 }
