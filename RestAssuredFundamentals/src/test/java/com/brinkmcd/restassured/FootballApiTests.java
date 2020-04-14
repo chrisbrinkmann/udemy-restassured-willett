@@ -75,7 +75,7 @@ public class FootballApiTests extends FootballApiConfig {
 						.extract().response();
 		
 		
-		Headers headers = response.getHeaders();
+		// Headers headers = response.getHeaders();
 		
 		String contentType = response.getHeader("Content-Type");
 		
