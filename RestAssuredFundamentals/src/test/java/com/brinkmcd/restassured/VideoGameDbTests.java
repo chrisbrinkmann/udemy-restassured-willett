@@ -8,6 +8,8 @@ import com.brinkmcd.restassured.config.VideoGamesDbEndpoints;
 import com.brinkmcd.videogame.VideoGame;
 
 import io.restassured.response.Response;
+import static org.hamcrest.Matchers.lessThan;
+
 
 import static io.restassured.RestAssured.*;
 import static io.restassured.matcher.RestAssuredMatchers.matchesXsdInClasspath;
@@ -90,7 +92,7 @@ public class VideoGameDbTests extends VideoGamesDbConfig {
 	@Test
 	public void getGame() {
 		given()
-		.pathParam("videoGameId", 15)
+		.pathParam("videoGameId", 5)
 		.when()
 		.get(VideoGamesDbEndpoints.SINGLE_VIDEO_GAME)
 		.then().log().all();
@@ -141,5 +143,20 @@ public class VideoGameDbTests extends VideoGamesDbConfig {
 		
 		System.out.println("Printing Pojo object converted from JSON res:");
 		System.out.println(videoGame.toString());
+	}
+	
+	@Test
+	public void captureResponseTime() {
+		long responseTime = get(VideoGamesDbEndpoints.ALL_VIDEO_GAMES).time();
+		
+		System.out.println("Response time (milliseconds): " + responseTime);
+	}
+
+	@Test
+	public void assertOnResponseTime() {
+		when()
+			.get(VideoGamesDbEndpoints.ALL_VIDEO_GAMES)
+		.then()
+			.time(lessThan(10000L));
 	}
 }
